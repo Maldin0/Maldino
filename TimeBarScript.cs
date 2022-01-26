@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimeBarScript : MonoBehaviour
 {
     public Transform fillbar;
-    public float currentTime;//ตัวที่แสดงค่าเวลา
+    public float currentTime;//Tell the time
     public float delay=0.5f;
     public static TimeBarScript instance;
 
@@ -30,7 +30,7 @@ public class TimeBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime -= delay * Time.deltaTime;//ลด currentTime
+        currentTime -= delay * Time.deltaTime;//Reduce currentTime
         fillbar.GetComponent<Image>().fillAmount = currentTime;
         if (currentTime < 0.1f)
         {
