@@ -18,11 +18,11 @@ public class CheckButton : MonoBehaviour
 
     public void checkTagButton()
     {
-        //ตอบถูกได้คะแนน
+        //If the answer is correct, point +1
         if (gameObject.CompareTag(MathController.instance.tagBtn))
         {
             MathController.instance.score++;
-            MathController.instance.AdditionMethod();//เปลี่ยนโจทย์
+            MathController.instance.AdditionMethod();//Generate new question
             Debug.Log(MathController.instance.score);
             TimeBarScript.instance.currentTime = 1;
             au.PlayOneShot(sound[0]);
@@ -31,14 +31,14 @@ public class CheckButton : MonoBehaviour
         {
             StartCoroutine(ChangeColor());
             MathController.instance.score--;
-            MathController.instance.AdditionMethod();//เปลี่ยนโจทย์
+            MathController.instance.AdditionMethod();//Generate new question
             Debug.Log(MathController.instance.score);
             TimeBarScript.instance.currentTime = 1;
             au.PlayOneShot(sound[1]);
         }
         IEnumerator ChangeColor()
         {
-            //พื้นหลังสีแดง RGBA
+            //Change background color using RBG 
             background.color = new Color32(221, 127, 127, 255);
             yield return new WaitForSeconds(0.05f);
             background.color = new Color32(154, 154, 154, 255);
