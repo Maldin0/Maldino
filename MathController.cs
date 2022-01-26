@@ -8,10 +8,10 @@ public class MathController : MonoBehaviour
     private float a, b;
     private float answer;
     public Text valueA, valueB, scoretxt;
-    private float localofAnswer;//เก็บตำแหน่งคำตอบที่ถูก
+    private float localofAnswer;//Answers location
     public int score;
-    public GameObject[] choiceBtn;//จำนวน choice 4 ตัว
-    public string tagBtn;//บอกว่า choice ไหนถูกไหนผิด
+    public GameObject[] choiceBtn;//Get choice button from Unity
+    public string tagBtn;//Tell which choice is correct or wrong
     public static MathController instance;
 
     private void Awake()
@@ -36,7 +36,7 @@ public class MathController : MonoBehaviour
         tagBtn = localofAnswer.ToString();
         scoretxt.text = "" + score;
     }
-    //สร้าง function ในการสุ่มตัวเลขและนำตัวเลขมาบวกกัน
+    //Creat function to random numbers and plus them together
     public void AdditionMethod()
     {
         a = Random.Range(0, 21);//min,max (0-21)
@@ -46,22 +46,22 @@ public class MathController : MonoBehaviour
         answer = a + b;
         Debug.Log(answer);
 
-        //สุ่มตำแหน่งที่จะใส่คำตอบที่ถูก
-        localofAnswer = Random.Range(0,choiceBtn.Length);//ตำแหน่งของปุ่มที่ถูก
+        //random correct answers location
+        localofAnswer = Random.Range(0,choiceBtn.Length);//ยตร“รกรยนรจยงยขรยงยปรรจรยทร•รจยถรยก
 
-        //ลูป choice
+        //Loop choice
         for (int i=0;i<choiceBtn.Length;i++)
         {
-            //เพื่อเปลี่ยนตัวเลขด้านใน
-            //ตำแหน่งตรงกับ localofAnswer
+            //to change number in button
+            //put correct answer in
             if (i==localofAnswer)
             {
-                //ใส่คำตอบที่ถูกลงใน Text ของปุ่ม
+                //put correct answer in Text of button
                 choiceBtn[i].GetComponentInChildren<Text>().text = "" + answer;
             }
             else
             {
-                //ใส่คำตอบที่ผิดลงในปุ่ม
+                //put wrong answer in Text of other button
                 choiceBtn[i].GetComponentInChildren<Text>().text = "" + Random.Range(1, 41);
                 while (choiceBtn[i].GetComponentInChildren<Text>().text == "" + answer)
                 {
