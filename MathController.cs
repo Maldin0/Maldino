@@ -47,7 +47,7 @@ public class MathController : MonoBehaviour
         Debug.Log(answer);
 
         //random correct answers location
-        localofAnswer = Random.Range(0,choiceBtn.Length);//µÓáË¹è§¢Í§»ØèÁ·Õè¶Ù¡
+        localofAnswer = Random.Range(0,choiceBtn.Length);//location of correct answer
 
         //Loop choice
         for (int i=0;i<choiceBtn.Length;i++)
@@ -62,10 +62,10 @@ public class MathController : MonoBehaviour
             else
             {
                 //put wrong answer in Text of other button
-                choiceBtn[i].GetComponentInChildren<Text>().text = "" + Random.Range(1, 41);
+                choiceBtn[i].GetComponentInChildren<Text>().text = "" + Random.Range(0, 41);
                 while (choiceBtn[i].GetComponentInChildren<Text>().text == "" + answer)
                 {
-                    choiceBtn[i].GetComponentInChildren<Text>().text = "" + Random.Range(1, 41);
+                    choiceBtn[i].GetComponentInChildren<Text>().text = "" + Random.Range(0, 41);
                 }
             }
         }
